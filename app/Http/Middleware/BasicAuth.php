@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class BasicAuth
 {
@@ -17,8 +18,8 @@ class BasicAuth
      */
     public function handle(Request $request, Closure $next)
     {
-        // $response = Auth::onceBasic();
-        // dd($response);
+
+        Log::info(['Request' => $request->all()]);
         if(null !== Auth::onceBasic()){
             return response()->json(['message' => 'unauthorized'], 401);
         }
