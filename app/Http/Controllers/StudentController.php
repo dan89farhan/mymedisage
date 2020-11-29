@@ -28,6 +28,8 @@ class StudentController extends Controller
                 )
             );
 
+            $skip = $request->skip ?? 0;
+            $take = $request->take ?? 5;
             if ($studentValidator->fails()) {
 
                 $error_messages = implode(',', $studentValidator->messages()->all());
@@ -51,7 +53,7 @@ class StudentController extends Controller
                 $filterStudentData = $filterStudentData->where('country_code','LIKE','%'.$studentFilterData['country_code'].'%');
             }
 
-            $result = $filterStudentData->get();
+            $result = $filterStudentData->skip($skip)->take($take)->get();
             // dd($studentFilterData);
 
             return response()->json(['result' => $result, 'success' => true]);
