@@ -1,7 +1,11 @@
 <?php
 
+use App\Http\Controllers\StudentController;
+use App\Models\Student;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+
+// StudentController
 
 /*
 |--------------------------------------------------------------------------
@@ -25,8 +29,15 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::group(['middleware' => ['basicauth']], function () {
-    Route::get('/user', function (Request $request) {
-        // Only authenticated users may enter...
-        return $request->user();
-    });
+    // Route::get('/user', function (Request $request) {
+    //     // Only authenticated users may enter...
+    //     return $request->user();
+    // });
+
+
 });
+Route::post('/search_student', 'StudentController@getStudent');
+// Route::post('/search_student', function (Request $request) {
+//     // Only authenticated users may enter...
+//     return $request->user();
+// });
