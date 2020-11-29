@@ -35,5 +35,5 @@ Curl Request
     --form 'phone_number="707"' \
     --form 'country="pore"' \
     --form 'take="5"' \
-    --form 'skip="20"'
+    --form 'skip="0"'
 
